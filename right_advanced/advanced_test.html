@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p id="place2">this is the data stored</p>
+	<button type="submit" onclick="load()" class="btn">load</button>
+
+<script type="text/javascript">
+	function load(){
+		document.getElementById("place2").innerHTML = "Name: "+localStorage.getItem("firstname")+"<br>Lastname: "+localStorage.getItem("lastname") + "<br>Age: " + localStorage.getItem("age");
+	}
+</script>
+</body>
+</html>

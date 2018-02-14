@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Localstorage example</title>
+</head>
+
+<body>
+    Name:
+    <input type="text" id="myText">
+    <p id="result">Value which will go in the localstorage will be printed here
+        <p>
+            <p id="result-ls">Result of localstorage will go here</p>
+            <button onclick="myFunction()">Set localstorage</button>
+            <button onclick="getLocalStorage()">Read localstorage</button>
+            <script>
+            function myFunction() {
+                a = document.getElementById("myText").value;
+                document.getElementById("result").innerHTML = a;
+                localStorage.setItem("lastname", a);
+                Object.assign(person, { lastname: a });
+            }
+
+            var person = {
+                name: "CodeFactory",
+                age: 29
+            }
+
+
+            function getLocalStorage() {
+                document.getElementById("result-ls").innerHTML = localStorage.getItem("lastname");
+                console.log(person.lastname)
+                person = JSON.stringify(person);
+                console.log(person)
+                person = JSON.parse(person);
+                console.log(person)
+            }
+            </script>
+</body>
+
+</html>

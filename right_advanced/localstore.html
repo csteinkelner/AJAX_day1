@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form>
+		<input type="text" name="firstname" id="firstname">
+		<input type="text" name="lastname" id="lastname">
+		<input type="text" name="age" id="age">
+	</form>
+
+	<p id="place1">this is the saved data</p>
+	<p id="place2">this is the data stored</p>
+
+	<button type="button" onclick="save_data()" class="btn">save</button>
+	<button type="submit" onclick="load()" class="btn">load</button>
+
+
+<script type="text/javascript">
+	function save_data(){
+		var firstname = document.getElementById("firstname").value;
+		var lastname = document.getElementById("lastname").value;
+		var age = document.getElementById("age").value;
+
+		document.getElementById("place1").innerHTML = "I'm "+ firstname +" "+ lastname +", "+ age+ "years old";
+
+		localStorage.setItem("firstname", firstname);
+	    localStorage.setItem("lastname", lastname);
+	    localStorage.setItem("age", age);
+	}
+
+	function load(){
+		document.getElementById("place2").innerHTML = "Name: "+localStorage.getItem("firstname")+"<br>Lastname: "+localStorage.getItem("lastname") + "<br>Age: " + localStorage.getItem("age");
+	}
+</script>
+
+</body>
+</html>
