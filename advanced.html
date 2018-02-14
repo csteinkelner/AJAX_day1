@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Great+Vibes" rel="stylesheet">
+</head>
+<body>
+
+	<form>
+		<input type="text" name="firstname" id="firstname">
+		<input type="text" name="lastname" id="lastname">
+		<input type="text" name="age" id="age">
+	</form>
+
+	<button type="button" onclick="save_data()" class="btn">save</button>
+	<button type="submit" onclick="load()" class="btn">load</button>
+
+<script type="text/javascript">
+
+
+	// user ={
+	// 	"first_name": firstname,
+ //        "last_name": lastname,
+ //        "age": age,
+	// };
+
+
+	function save_data(){
+
+		var firstname = document.getElementById("firstname").value;
+		var lastname = document.getElementById("lastname").value;
+		var age = document.getElementById("age").value;
+
+		myJSON = JSON.stringify(firstname);
+	    localStorage.setItem("firstname", myJSON);
+
+	    myJSON = JSON.stringify(lastname);
+	    localStorage.setItem("lastname", myJSON);
+
+	    myJSON = JSON.stringify(age);
+	    localStorage.setItem("age", myJSON);
+
+
+	    text1 = localStorage.getItem("firstname");
+	    text2 = localStorage.getItem("lastname");
+	    text3 = localStorage.getItem("age");
+
+	    obj1 = JSON.parse(text1);
+	    obj2 = JSON.parse(text2);
+	    obj3 = JSON.parse(text3);
+
+	}
+
+// check if it's saved
+	function load(){
+		console.log(text1);
+	    console.log(text2);
+	    console.log(text3);
+	}
+
+	 // document.getElementById("demo").innerHTML = "My Name is " + obj.name + obj.lastname + " and I am " + obj.age + "years old.";
+	// }
+	// }
+
+</script>
+</body>
+</html>

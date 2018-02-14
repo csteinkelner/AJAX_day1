@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Great+Vibes" rel="stylesheet">
+    <style type="text/css">
+        th{
+            background-color: lightcyan; 
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    
+    <h1>My playlist</h1>
+
+    <button type="button" onclick="loadDoc()">Show</button>
+
+    <br>
+    <br>
+
+    <table id="content" class="table"></table>
+
+</div>
+<script>
+
+    function loadDoc() {
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+
+            if (this.readyState == 4 && this.status == 200) {
+                myFunction(this);
+            }
+        };
+
+        xhttp.open("GET", "intermediate_1.xml", true);
+        xhttp.send();
+    }
+
+
+    function myFunction(xml) {
+
+        var i;
+        var xmlDoc = xml.responseXML;
+        var table = "<tr><th>title</th><th>artist</th><th>country</th><th>genre</th><th>year</th></tr>";
+        var x = xmlDoc.getElementsByTagName("song");
+
+        for (i = 0; i < x.length; i++) {
+            table += "<tr><td>" +
+                x[i].getElementsByTagName("title")[0].childNodes[0].nodeValue +
+                "</td><td>" +
+                x[i].getElementsByTagName("artist")[0].childNodes[0].nodeValue +
+                "</td><td>" +
+                x[i].getElementsByTagName("country")[0].childNodes[0].nodeValue +
+                "</td><td>" +
+                x[i].getElementsByTagName("genre")[0].childNodes[0].nodeValue +
+                "</td><td>" +
+                x[i].getElementsByTagName("year")[0].childNodes[0].nodeValue +
+                "</td></tr>";
+        }
+        document.getElementById("content").innerHTML = table;
+    }
+</script>
+</body>
+</html>
